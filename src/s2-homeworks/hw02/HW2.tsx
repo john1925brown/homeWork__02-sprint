@@ -26,7 +26,7 @@ export const filterAffairs = (
   filter: FilterType
 ): AffairType[] => {
   if (filter === 'all') {
-    return [...affairs];
+    return affairs;
   }
   return affairs.filter((affair) => affair.priority === filter);
 };
