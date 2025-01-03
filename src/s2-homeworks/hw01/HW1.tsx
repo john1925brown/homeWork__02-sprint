@@ -4,11 +4,6 @@ import s2 from '../../s1-main/App.module.css';
 import FriendMessage from './friend-message/FriendMessage';
 import avatar from './avatar.png';
 
-/*
-
- * 5 - сделать стили в соответствии с дизайном
- * */
-
 export type MessageType = {
   id: number;
   user: {
