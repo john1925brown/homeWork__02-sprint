@@ -1,0 +1,26 @@
+.input:focus {
+}
+
+.input {
+}
+
+.inputWrapper {
+}
+
+.superInput {
+  outline: none;
+}
+
+.errorInput {
+  color: #cc1439;
+  outline: none;
+}
+
+.errorInput:focus {
+  color: #cc1439;
+  outline: none;
+}
+
+.error {
+  color: #cc1439;
+}
