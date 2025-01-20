@@ -1,13 +1,24 @@
 .button {
-}
-
-.disabled {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.42857;
+  border-radius: 3px;
+  padding: 5px 24px;
+  height: 30px;
+  border: 1px solid #06c;
 }
 
 .secondary {
+  color: #06c;
+  background-color: #fff;
 }
 
 .default {
+  background-color: #06c;
+  color: #fff;
+}
+
+.disabled {
 }
 
 .red {
@@ -21,7 +32,6 @@
 
 .secondary:hover {
 }
-
 
 .default:active {
 }
