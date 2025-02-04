@@ -8,16 +8,15 @@ const arr = [
   { id: 1, value: 'Pre-junior' },
   { id: 2, value: 'Junior' },
   { id: 3, value: 'Junior +' },
-]; // value может быть изменено
+];
 
 const HW7 = () => {
-  const [value, onChangeOption] = useState(1); // селект и радио должны работать синхронно
+  const [value, onChangeOption] = useState(1);
 
   return (
     <div id={s.hw7}>
       <div className={s2.hwTitle}>Homework #7</div>
 
-      {/*демонстрация возможностей компонент:*/}
       <div className={s2.hw}>
         <div className={s.container}>
           <div>
