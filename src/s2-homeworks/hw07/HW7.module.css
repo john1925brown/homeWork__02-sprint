@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  gap: 110px;
+}
+
+#hw7 {
+  padding-left: 70px;
+  padding-right: 70px;
+}
