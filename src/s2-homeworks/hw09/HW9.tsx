@@ -1,17 +1,11 @@
 import React from 'react';
 import Clock from './Clock';
 import s2 from '../../s1-main/App.module.css';
-
-/*
-* 1 - в файле Clock.tsx дописать функции stop, start, onMouseEnter, onMouseLeave
-* 2 - в файле Clock.tsx из переменной date вычислить значения stringTime, stringDate, stringDay, stringMonth
-
-* 4 - сделать стили в соответствии с дизайном
-* */
+import s from './HW9.module.css';
 
 const HW9 = () => {
   return (
-    <div id={'hw9'}>
+    <div id={s.hw9}>
       <div className={s2.hwTitle}>Homework #9</div>
 
       <div className={s2.hw}>
