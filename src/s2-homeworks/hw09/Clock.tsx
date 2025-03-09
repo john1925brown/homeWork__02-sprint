@@ -20,10 +20,6 @@ function Clock() {
     setTimerId(intervalId);
   };
 
-  //   setInterval(() => {
-  //     console.log(date); //Tue Feb 25 2025 22:21:38 GMT+0300 (Москва, стандартное время)
-  //   }, 1000);
-
   const stop = () => {
     clearInterval(timerId);
     setTimerId(undefined);
@@ -40,16 +36,15 @@ function Clock() {
     hour: 'numeric',
     minute: 'numeric',
     second: 'numeric',
-  }) || <br />; // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
-  const stringDate = new Intl.DateTimeFormat('ru') || <br />; // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
+  }) || <br />;
+  const stringDate = new Intl.DateTimeFormat('ru') || <br />;
 
-  // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
   const stringDay = new Intl.DateTimeFormat('en-US', {
     weekday: 'long',
-  }) || <br />; // пишут студенты
+  }) || <br />;
   const stringMonth = new Intl.DateTimeFormat('en-US', {
     month: 'long',
-  }) || <br />; // пишут студенты
+  }) || <br />;
 
   return (
     <div className={s.clock}>
