@@ -8,13 +8,12 @@ import error400 from './images/400.svg';
 import error500 from './images/500.svg';
 import errorUnknown from './images/error.svg';
 
-
-
 const HW13 = () => {
   const [code, setCode] = useState('');
   const [text, setText] = useState('');
   const [info, setInfo] = useState('');
   const [image, setImage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const send = (x?: boolean | null) => () => {
     const url =
@@ -26,41 +25,41 @@ const HW13 = () => {
     setImage('');
     setText('');
     setInfo('...loading');
+    setLoading(true);
 
     axios
       .post(url, { success: x })
       .then((res) => {
         setCode('Код 200!');
         setImage(success200);
-        setText(`..всё ок) 
-                    код 200 - обычно означает что скорее всего всё ок)`);
-        setInfo('');
+        setText(res.data.errorText);
+        setInfo(res.data.info);
       })
       .catch((e) => {
-        console.log(e);
         if (e.request.status === 500) {
           setCode('Ошибка 500!');
           setImage(error500);
-          setText(`эмитация ошибки на сервере
-    ошибка 500 - обычно означает что что-то сломалось на сервере, например база данных)`);
-          setInfo('');
+          setText(e.response.data.errorText);
+          setInfo(e.response.data.info);
         }
 
-        if (e.name === 'AxiosError') {
+        if (e.code === 'ERR_NETWORK') {
+          console.log(e);
           setCode('Error!');
           setImage(errorUnknown);
-          setText(`Network Error
-AxiosError`);
-          setInfo('');
+          setText(e.message);
+          setInfo(e.name);
         }
 
         if (e.request.status === 400) {
           setCode('Ошибка 400!');
           setImage(error400);
-          setText(`Ты не отправил success в body вообще!
-ошибка 400 - обычно означает что скорее всего фронт отправил что-то не то на бэк!`);
-          setInfo('');
+          setText(e.response.data.errorText);
+          setInfo(e.response.data.info);
         }
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -74,7 +73,7 @@ AxiosError`);
             id={'hw13-send-true'}
             onClick={send(true)}
             xType={'secondary'}
-            disabled={!!info}
+            disabled={loading}
           >
             Send true
           </SuperButton>
@@ -82,7 +81,7 @@ AxiosError`);
             id={'hw13-send-false'}
             onClick={send(false)}
             xType={'secondary'}
-            disabled={!!info}
+            disabled={loading}
           >
             Send false
           </SuperButton>
@@ -90,7 +89,7 @@ AxiosError`);
             id={'hw13-send-undefined'}
             onClick={send(undefined)}
             xType={'secondary'}
-            disabled={!!info}
+            disabled={loading}
           >
             Send undefined
           </SuperButton>
@@ -98,7 +97,7 @@ AxiosError`);
             id={'hw13-send-null'}
             onClick={send(null)}
             xType={'secondary'}
-            disabled={!!info}
+            disabled={loading}
           >
             Send null
           </SuperButton>
